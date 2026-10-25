@@ -61,7 +61,7 @@ export const signIn: RequestHandler = async (req, res) => {
       const token = createJWT(userInfos);
 
       // Retorna os dados do usuário e o token
-      res.status(200).json({ token, user })
+      res.status(200).json({ token, userInfos })
    } else {
       res.status(404).json({ error: 'Login/Senha inválida' })
    }
