@@ -1,0 +1,9 @@
+npx prisma contract emit
+npx prisma migration plan --name 'message'
+
+npx prisma contract emit
+npx prisma migration ref set db 20261024T2027_init
+npx prisma migration plan --name 'change priceFields'
+npx prisma db create
+npx prisma db migrate --advance-ref db
+npx prisma db migrate init

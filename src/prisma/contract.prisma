@@ -1,0 +1,25 @@
+// use prisma-8
+model User {
+  id       Int     @id @default(autoincrement())
+  name     String
+  password String
+  login    String  @unique
+  isAdmin  Boolean @default(false)
+  Order    Sales[]
+}
+
+model Product {
+  id       Int    @id @default(autoincrement())
+  name     String
+  price    Float
+  quantity Int
+  category String
+}
+
+model Sales {
+  id         Int      @id @default(autoincrement())
+  priceOrder Float
+  userId     Int // Deve ser um campo de ID do usuário
+  user       User     @relation(fields: [userId], references: [id])
+  date       DateTime @default(now())
+}
